@@ -1,0 +1,27 @@
+---
+- name: Install Docker Key
+  apt_key: 
+   url: https://download.docker.com/linux/ubuntu/gpg  
+   state: present
+
+- name: Add Docker Source Repo
+  apt_repository: 
+   repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_lsb.codename}} stable 
+   state: present
+
+- name: Update Apt Cache
+  apt: 
+   update_cache: yes
+
+- name: Install Docker
+  apt:
+   name: docker-ce
+
+- name: Add User to Docker Group
+  user:
+    name: "{{ansible_user}}"
+    shell: /bin/bash
+    groups: 
+     - docker
+    append: yes
+    state: present

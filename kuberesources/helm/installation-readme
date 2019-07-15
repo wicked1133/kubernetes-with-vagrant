@@ -1,0 +1,4 @@
+**Run these commands to Install and configure helm client and server-side tiller**
+curl -L https://git.io/get_helm.sh | bash
+kubectl apply -f helm
+helm init --service-account=tiller --history-max 300
