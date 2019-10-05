@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       ansible.raw_arguments  = ["--private-key=~/.ssh/kubernetesvm_key"]
       ansible.playbook = "../provisioner/kubernetes.yml"
     end
-    master.vm.provision "shell", path: "parent-folder-path/provisioner/master.sh" 
+    master.vm.provision "shell", path: "../provisioner/master.sh" 
   end 
  
   # synchronize folders
